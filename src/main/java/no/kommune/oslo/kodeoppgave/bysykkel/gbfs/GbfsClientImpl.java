@@ -50,6 +50,7 @@ public class GbfsClientImpl implements GbfsClient {
     public List<GbfsStationInformation> getStationInformationList() {
 
         JsonNode stationsJsonArray = executeGbfsRequest(baseUrl + stationInformationPath)
+                // data and stations fields are required
                 .getBody().get("data")
                 .get("stations");
 
@@ -63,6 +64,7 @@ public class GbfsClientImpl implements GbfsClient {
     @Override
     public List<gbfsStationStatus> getStationStatusList() {
         JsonNode stationsJsonArray = executeGbfsRequest(baseUrl + stationStatusPath)
+                // data and stations fields are required
                 .getBody().get("data")
                 .get("stations");
 
