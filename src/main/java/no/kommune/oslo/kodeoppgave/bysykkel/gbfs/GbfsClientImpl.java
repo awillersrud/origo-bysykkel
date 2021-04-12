@@ -7,6 +7,7 @@ import no.kommune.oslo.kodeoppgave.bysykkel.gbfs.dto.GbfsStationInformation;
 import no.kommune.oslo.kodeoppgave.bysykkel.gbfs.dto.gbfsStationStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -23,17 +24,26 @@ public class GbfsClientImpl implements GbfsClient {
 
     private ObjectMapper objectMapper;
 
-    private String baseUrl = "https://gbfs.urbansharing.com/oslobysykkel.no/";
+    private String baseUrl;
 
-    private String stationInformationPath = "station_information.json";
+    private String stationInformationPath;
 
-    private String stationStatusPath = "station_status.json";
+    private String stationStatusPath;
 
-    private String clientIdentifier = "AsbjørnWillersrud-OrigoKodeoppgave";
+    private String clientIdentifier;
 
-    public GbfsClientImpl(RestTemplate restTemplate, ObjectMapper objectMapper) {
+    public GbfsClientImpl(RestTemplate restTemplate,
+                          ObjectMapper objectMapper,
+                          @Value("${gbfs.base.url}") String baseUrl,
+                          @Value("${gbfs.station.information.path}") String stationInformationPath,
+                          @Value("${gbfs.station.status.path}") String stationStatusPath,
+                          @Value("${gbfs.client.identifier}") String clientIdentifier) {
         this.restTemplate = restTemplate;
         this.objectMapper = objectMapper;
+        this.baseUrl = baseUrl;
+        this.stationInformationPath = stationInformationPath;
+        this.stationStatusPath = stationStatusPath;
+        this.clientIdentifier = clientIdentifier;
     }
 
     @Override
