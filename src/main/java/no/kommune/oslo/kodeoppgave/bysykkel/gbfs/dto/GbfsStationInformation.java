@@ -1,6 +1,6 @@
-package no.kommune.oslo.kodeoppgave.bysykkel.gdfs.dto;
+package no.kommune.oslo.kodeoppgave.bysykkel.gbfs.dto;
 
-public class GdfsStationInformation {
+public class GbfsStationInformation {
 
     private Long station_id;
 
