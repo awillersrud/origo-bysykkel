@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Stasjoner - Oslo Bysykkel</title>
+</head>
+<body>
+<h1>Stasjoner - Oslo Bysykkel</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Stasjon</th>
+        <th>Sykler</th>
+        <th>Tilgjengelige</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="station : ${stations}">
+        <td><span th:text="${station.name}"> </span></td>
+        <td><span th:text="${station.availableBikes}"> </span></td>
+        <td><span th:text="${station.availableDocks}"> </span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
